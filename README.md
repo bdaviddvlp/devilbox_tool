@@ -4,6 +4,7 @@
 
 ---
 
+* Copy the `handle-docker.sh` file to your devilbox root
 * Add an alias in your `.bashrc` or `.zsrhc` etc. as the following:
 
 ```
