@@ -5,7 +5,7 @@
 ---
 
 * Copy the `handle-docker.sh` file to your devilbox root or clone this repo and create symlink to devilbox root
-* Add an alias in your `.bashrc` or `.zshrc` etc. as the following:
+* Add `$DEVILBOX_PATH` and `devilbox-tool()` function in your `.bashrc` or `.zshrc` etc. as the following:
 
 ```
 export DEVILBOX_PATH=path/to/devilbox/root
