@@ -5,7 +5,7 @@
 ---
 
 * Copy the `handle-docker.sh` file to your devilbox root
-* Add an alias in your `.bashrc` or `.zsrhc` etc. as the following:
+* Add an alias in your `.bashrc` or `.zshrc` etc. as the following:
 
 ```
 export DEVILBOX_PATH=path/to/devilbox/root
