@@ -30,9 +30,9 @@ See in the help menu
 ### Note
 
 ---
-This script assumes that you already have the following files:
-* .env7
-* .env8
-* docker-compose.yml.up
+This script assumes that you already have the following files in devilbox root:
+* `.env7`
+* `.env8`
+* `docker-compose.yml.up`
 
 If these files are missing, the script won't work properly.
