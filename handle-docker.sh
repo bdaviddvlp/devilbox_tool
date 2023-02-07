@@ -22,7 +22,6 @@ fi
 isPhp7=$(grep 'PHP_SERVER=7.4' .env | head -n 1 | cut -c 1)
 isPhp8=$(grep 'PHP_SERVER=8.1' .env | head -n 1 | cut -c 1)
 isDockerRunning=$(docker-compose ls | grep devilbox | wc -l)
-wasTriggered=0
 
 if [ ! -f "/tmp/docker_tool" ]; then
   touch /tmp/docker_tool
