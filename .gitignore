@@ -2,3 +2,5 @@
 *.xml
 *.pb
 *.iml
+.idea
+.idea/*
