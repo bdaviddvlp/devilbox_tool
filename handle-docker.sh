@@ -152,7 +152,8 @@ function printHelpText () {
     --login               -> login to running devilbox container
     --down                -> stop and remove devilbox containers
     --which               -> shows currently running config
-    -h, --help, <no arg>  -> this message
+    --restart             -> restart currently running config
+    --help, -h, <no arg>  -> this message
 
 HELP
 }
