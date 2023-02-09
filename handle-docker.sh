@@ -1,49 +1,5 @@
 #!/bin/bash
 
-checkDevilboxPathExist
-
-sudo chmod 666 /var/run/docker.sock
-
-cd $DEVILBOX_PATH
-
-if [[ "$1" == '--help' || "$1" == '-h' || "$#" == 0 ]]; then
-  printHelpText
-fi
-
-isPhp7=$(grep 'PHP_SERVER=7.4' .env | head -n 1 | cut -c 1)
-isPhp8=$(grep 'PHP_SERVER=8.1' .env | head -n 1 | cut -c 1)
-isDockerRunning=$(docker-compose ls | grep devilbox | wc -l)
-
-if [ ! -f "/tmp/docker_tool" ]; then
-  touch /tmp/docker_tool
-  docker-compose down
-  isDockerRunning=0
-fi
-
-if [[ "$1" == '--php7' ]]; then
-  startUpPhp7Config
-fi
-
-if [[ "$1" == '--php8' ]]; then
-  startUpPhp8Config
-fi
-  
-if [[ "$1" == '--login' ]]; then
-  loginToDevilbox
-fi
-
-if [[ "$1" == '--down' ]]; then
-  shutDevilbox
-fi
-
-if [[ "$1" == '--which' ]]; then
-  findWhichConfigIsRunning
-fi
-
-if [[ "$1" == '--restart' ]]; then
-  restartDevilbox
-fi
-
 function startUpPhp8Config() {
 
 if [[ "$isPhp8" != 'P' && "$isDockerRunning" == 1 ]]; then
@@ -227,3 +183,47 @@ function restartDevilbox () {
 MESSAGE
   fi
 }
+
+checkDevilboxPathExist
+
+sudo chmod 666 /var/run/docker.sock
+
+cd $DEVILBOX_PATH
+
+if [[ "$1" == '--help' || "$1" == '-h' || "$#" == 0 ]]; then
+  printHelpText
+fi
+
+isPhp7=$(grep 'PHP_SERVER=7.4' .env | head -n 1 | cut -c 1)
+isPhp8=$(grep 'PHP_SERVER=8.1' .env | head -n 1 | cut -c 1)
+isDockerRunning=$(docker-compose ls | grep devilbox | wc -l)
+
+if [ ! -f "/tmp/docker_tool" ]; then
+  touch /tmp/docker_tool
+  docker-compose down
+  isDockerRunning=0
+fi
+
+if [[ "$1" == '--php7' ]]; then
+  startUpPhp7Config
+fi
+
+if [[ "$1" == '--php8' ]]; then
+  startUpPhp8Config
+fi
+  
+if [[ "$1" == '--login' ]]; then
+  loginToDevilbox
+fi
+
+if [[ "$1" == '--down' ]]; then
+  shutDevilbox
+fi
+
+if [[ "$1" == '--which' ]]; then
+  findWhichConfigIsRunning
+fi
+
+if [[ "$1" == '--restart' ]]; then
+  restartDevilbox
+fi
