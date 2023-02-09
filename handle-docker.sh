@@ -40,6 +40,10 @@ if [[ "$1" == '--which' ]]; then
   findWhichConfigIsRunning
 fi
 
+if [[ "$1" == '--restart' ]]; then
+  restartDevilbox
+fi
+
 function startUpPhp8Config() {
 
 if [[ "$isPhp8" != 'P' && "$isDockerRunning" == 1 ]]; then
@@ -203,5 +207,23 @@ function checkDevilboxPathExist () {
     Your DEVILBOX_PATH is empty, please set it fist before using this tool!
 ERROR
   exit
+  fi
+}
+
+function restartDevilbox () {
+  if [[ "$isDockerRunning" == 1 ]]; then
+    if [[ "$isPhp8" == 'P' ]]; then
+      docker-compose down
+      docker-compose up httpd mysql memcd php redis -d
+    fi
+
+    if [[ "$isPhp7" == 'P' ]]; then
+      docker-compose down
+      docker-compose up httpd mysql memcd php -d
+    fi
+  else
+    cat << MESSAGE
+    Devilbox is not running, nothing to restart!
+MESSAGE
   fi
 }
